@@ -18,8 +18,7 @@ export default async function ServicesPage() {
 
       <ServicesHero />
 
-      {services.map((service, index) => (
-        <ServiceSection
+{services.map((service: any, index: number) => (        <ServiceSection
           key={service.id}
           service={{
             id: Number(index + 1),

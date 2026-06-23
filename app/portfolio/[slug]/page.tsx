@@ -62,7 +62,7 @@ export default async function ProjectDetailPage({
             <h2 className="text-3xl font-black">Technologies</h2>
 
             <div className="mt-8 flex flex-wrap gap-3">
-              {project.technologies.map((tech) => (
+              {project.technologies.map((tech: string) => (
                 <span
                   key={tech}
                   className="rounded-full border border-white/10 bg-black/30 px-4 py-2 text-zinc-300"
@@ -77,7 +77,7 @@ export default async function ProjectDetailPage({
             <h2 className="text-3xl font-black">Features</h2>
 
             <div className="mt-8 grid gap-4">
-              {project.features.map((feature) => (
+              {project.features.map((feature: string) => (
                 <div key={feature} className="flex items-center gap-3">
                   <CheckCircle className="text-yellow-300" size={20} />
                   <span>{feature}</span>

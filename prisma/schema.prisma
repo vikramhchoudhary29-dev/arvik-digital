@@ -1,0 +1,97 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model Admin {
+  id        String   @id @default(cuid())
+  email     String   @unique
+  password  String
+  createdAt DateTime @default(now())
+}
+
+model Project {
+  id            String   @id @default(cuid())
+  title         String
+  slug          String   @unique
+  category      String
+  description   String
+  technologies  String[]
+  features      String[]
+  completedDate String
+  liveUrl       String
+  status        String
+  featured      Boolean  @default(false)
+  createdAt     DateTime @default(now())
+}
+
+model Testimonial {
+  id          String   @id @default(cuid())
+  name        String
+  company     String?
+  designation String?
+  review      String
+  rating      Int      @default(5)
+  image       String?
+  featured    Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+
+model Setting {
+  id             String @id @default(cuid())
+  companyName    String
+  email          String
+  phone          String
+  whatsapp       String
+  address        String
+  heroTitle      String
+  heroSubtitle   String
+}
+model Media {
+  id         String   @id @default(cuid())
+  publicId   String   @unique
+  url        String
+  secureUrl  String
+  width      Int?
+  height     Int?
+  format     String?
+  bytes      Int?
+  folder     String?
+  name       String
+  type       String
+  createdAt  DateTime @default(now())
+}
+model Service {
+  id          String   @id @default(cuid())
+  title       String
+  slug        String   @unique
+  icon        String
+  shortDesc   String
+  description String
+
+  benefits    String[]
+
+  featured    Boolean  @default(false)
+  order        Int      @default(0)
+
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+model Enquiry {
+  id        String   @id @default(cuid())
+  name      String
+  email     String
+  phone     String?
+  company   String?
+  service   String?
+  message   String
+
+  status    String   @default("New")
+
+  createdAt DateTime @default(now())
+}

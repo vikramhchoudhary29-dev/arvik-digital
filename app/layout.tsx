@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
+import "./globals.css";
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://example.com"),
+  metadataBase: new URL("https://arvikdigital.in"),
 
   title: {
     default: "Arvik Digital",
@@ -33,3 +34,18 @@ export const metadata: Metadata = {
     images: ["/logo.png"],
   },
 };
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="en">
+      <body>
+        <div className="noise" />
+        {children}
+      </body>
+    </html>
+  );
+}

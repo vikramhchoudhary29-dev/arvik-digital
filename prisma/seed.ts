@@ -15,13 +15,13 @@ const prisma = new PrismaClient({
 });
 
 async function main() {
-  const password = await bcrypt.hash("Admin@123", 10);
+  const password = await bcrypt.hash("Arvik@2931", 10);
 
   await prisma.admin.upsert({
-    where: { email: "admin@arvikdigital.com" },
+    where: { email: "patelvikram717@gmail.com" },
     update: { password },
     create: {
-      email: "admin@arvikdigital.com",
+      email: "patelvikram717@gmail.com",
       password,
     },
   });

@@ -18,21 +18,25 @@ export default function Navbar() {
   return (
     <header className="fixed left-0 top-0 z-40 w-full border-b border-white/10 bg-black/35 backdrop-blur-xl">
       <div className="container flex h-20 items-center justify-between">
-        <a href="#" className="flex items-center gap-3">
-          <div className="flex h-11 w-11 items-center justify-center rounded-2xl border border-yellow-400/30 bg-yellow-400/10 text-lg font-black text-yellow-300 gold-glow">
-            A
-          </div>
+        {/* Logo */}
+       <a href="/" className="flex items-center gap-3">
+  <img
+    src="/logo.png"
+    alt="Arvik Digital"
+    className="h-15 w-15 rounded-xl object-contain"
+  />
 
-          <div>
-            <h1 className="text-lg font-black tracking-[0.18em]">
-              ARVIK
-            </h1>
-            <p className="-mt-1 text-xs tracking-[0.32em] text-yellow-300">
-              DIGITAL
-            </p>
-          </div>
-        </a>
+  <div className="leading-none">
+    <h2 className="text-lg font-black tracking-[0.18em] text-white">
+      ARVIK
+    </h2>
+    <p className="mt-1 text-xs font-bold tracking-[0.3em] text-yellow-300">
+      DIGITAL
+    </p>
+  </div>
+</a>
 
+        {/* Desktop Menu */}
         <nav className="hidden items-center gap-8 lg:flex">
           {navLinks.map((link) => (
             <a
@@ -45,6 +49,7 @@ export default function Navbar() {
           ))}
         </nav>
 
+        {/* Desktop Button */}
         <a
           href={createWhatsAppLink(quoteMessage)}
           target="_blank"
@@ -53,6 +58,7 @@ export default function Navbar() {
           Get Quote
         </a>
 
+        {/* Mobile Menu Button */}
         <button
           onClick={() => setOpen(!open)}
           className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-white/10 bg-white/5 lg:hidden"
@@ -61,6 +67,7 @@ export default function Navbar() {
         </button>
       </div>
 
+      {/* Mobile Menu */}
       {open && (
         <div className="border-t border-white/10 bg-black/95 px-5 py-6 lg:hidden">
           <div className="flex flex-col gap-5">
@@ -69,7 +76,7 @@ export default function Navbar() {
                 key={link.name}
                 href={link.href}
                 onClick={() => setOpen(false)}
-                className="text-zinc-300"
+                className="text-zinc-300 transition hover:text-yellow-300"
               >
                 {link.name}
               </a>

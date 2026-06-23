@@ -1,6 +1,6 @@
 "use client";
 
-import { ArrowRight, Code2, Cpu, Globe2, Sparkles, TrendingUp } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 import { createWhatsAppLink, quoteMessage } from "@/lib/whatsapp";
 
 export default function Hero() {
@@ -34,7 +34,10 @@ export default function Hero() {
               className="group inline-flex items-center justify-center gap-3 rounded-2xl bg-gradient-to-r from-yellow-300 to-yellow-600 px-7 py-4 font-bold text-black shadow-2xl shadow-yellow-500/25 transition hover:scale-105"
             >
               Start Your Project
-              <ArrowRight size={18} className="transition group-hover:translate-x-1" />
+              <ArrowRight
+                size={18}
+                className="transition group-hover:translate-x-1"
+              />
             </a>
 
             <a
@@ -44,24 +47,7 @@ export default function Hero() {
               View Portfolio
             </a>
           </div>
-
-          <div className="mt-12 grid max-w-xl grid-cols-3 gap-4">
-            {[
-              ["25+", "Projects"],
-              ["15+", "Clients"],
-              ["100%", "Custom"],
-            ].map(([number, label]) => (
-              <div key={label} className="glass rounded-3xl p-5">
-                <h3 className="gold-text text-3xl font-black">{number}</h3>
-                <p className="mt-1 text-sm text-zinc-400">{label}</p>
-              </div>
-            ))}
-          </div>
         </div>
-
-       
-
-       
       </div>
     </section>
   );

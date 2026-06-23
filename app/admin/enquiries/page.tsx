@@ -13,9 +13,8 @@ export default async function AdminEnquiriesPage() {
       description="View and manage website enquiries."
     >
       <div className="grid gap-6">
-        {enquiries.map((item) => (
-          <div
-            key={item.id}
+{enquiries.map((item: any) => (
+  <div            key={item.id}
             className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6"
           >
             <div className="flex flex-col gap-5 lg:flex-row lg:items-start lg:justify-between">

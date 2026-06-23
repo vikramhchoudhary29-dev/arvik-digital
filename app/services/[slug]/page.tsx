@@ -43,7 +43,7 @@ export default async function ServiceDetailPage({
             <h2 className="text-3xl font-black">Benefits</h2>
 
             <div className="mt-8 grid gap-4 md:grid-cols-2">
-              {service.benefits.map((benefit) => (
+              {service.benefits.map((benefit: string) => (
                 <div
                   key={benefit}
                   className="flex items-center gap-3 rounded-2xl border border-white/10 bg-black/30 p-4"

@@ -24,7 +24,7 @@ export default async function AdminTestimonialsPage() {
       </div>
 
       <div className="grid gap-6">
-        {testimonials.map((item) => (
+        {testimonials.map((item: any) => (
           <div
             key={item.id}
             className="rounded-[28px] border border-white/10 bg-white/[0.04] p-6"

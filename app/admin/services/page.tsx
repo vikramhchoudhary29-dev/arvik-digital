@@ -36,7 +36,7 @@ export default async function AdminServicesPage() {
           </thead>
 
           <tbody>
-            {services.map((service) => (
+            {services.map((service: any) => (
               <tr key={service.id} className="border-b border-white/10">
                 <td className="p-5">
                   <p className="font-bold">{service.title}</p>

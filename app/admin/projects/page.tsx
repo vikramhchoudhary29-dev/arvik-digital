@@ -39,8 +39,7 @@ export default async function AdminProjectsPage() {
           </thead>
 
           <tbody>
-            {projects.map((project) => (
-              <tr key={project.id} className="border-b border-white/10">
+{projects.map((project: any) => (              <tr key={project.id} className="border-b border-white/10">
                 <td className="p-5 font-bold">{project.title}</td>
                 <td className="p-5 text-zinc-400">{project.category}</td>
 

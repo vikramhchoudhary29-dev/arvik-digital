@@ -1,0 +1,3 @@
+import type { MetadataRoute } from "next";
+import { prisma } from "@/lib/prisma";
+export default async function sitemap():Promise<MetadataRoute.Sitemap>{const base="https://arvikdigital.in";const [projects,services]=await Promise.all([prisma.project.findMany({select:{slug:true}}),prisma.service.findMany({select:{slug:true}})]);const staticRoutes=["/","/about","/services","/portfolio","/contact"];return [...staticRoutes.map(path=>({url:`${base}${path}`,lastModified:new Date()})),...services.map(x=>({url:`${base}/services/${x.slug}`,lastModified:new Date()})),...projects.map(x=>({url:`${base}/portfolio/${x.slug}`,lastModified:new Date()}))];}

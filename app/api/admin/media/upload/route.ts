@@ -1,0 +1,9 @@
+import { NextResponse } from "next/server";
+import cloudinary from "cloudinary";
+import { prisma } from "@/lib/prisma";
+import { requireAdmin } from "@/lib/auth";
+
+cloudinary.v2.config({cloud_name:process.env.CLOUDINARY_CLOUD_NAME,api_key:process.env.CLOUDINARY_API_KEY,api_secret:process.env.CLOUDINARY_API_SECRET});
+const MAX_BYTES=10*1024*1024;
+const ALLOWED=new Set(["image/jpeg","image/png","image/webp","image/gif","image/svg+xml","application/pdf"]);
+export async function POST(req:Request){try{await requireAdmin();const formData=await req.formData();const file=formData.get("file");if(!(file instanceof File))return NextResponse.json({error:"No file uploaded."},{status:400});if(file.size<=0||file.size>MAX_BYTES)return NextResponse.json({error:"File must be between 1 byte and 10 MB."},{status:400});if(!ALLOWED.has(file.type))return NextResponse.json({error:"Only JPG, PNG, WEBP, GIF, SVG and PDF files are allowed."},{status:400});const buffer=Buffer.from(await file.arrayBuffer());const resourceType=file.type==="application/pdf"?"raw":"image";const uploaded=await new Promise<cloudinary.UploadApiResponse>((resolve,reject)=>cloudinary.v2.uploader.upload_stream({folder:"arvik-digital",resource_type:resourceType},(error,result)=>error?reject(error):resolve(result as cloudinary.UploadApiResponse)).end(buffer));const media=await prisma.media.create({data:{publicId:uploaded.public_id,url:uploaded.url,secureUrl:uploaded.secure_url,width:uploaded.width,height:uploaded.height,format:uploaded.format,bytes:uploaded.bytes,folder:uploaded.folder,name:file.name,type:file.type}});return NextResponse.json(media);}catch(e){const msg=e instanceof Error?e.message:"Upload failed";return NextResponse.json({error:msg==="UNAUTHORIZED"?"Unauthorized":msg},{status:msg==="UNAUTHORIZED"?401:400});}}

@@ -1,0 +1,5 @@
+"use client";
+import { useRouter } from "next/navigation";
+import { useState } from "react";
+const statuses=["New","Contacted","In Progress","Closed","Archived"] as const;
+export default function EnquiryStatusActions({id,status}:{id:string;status:string}){const router=useRouter();const [loading,setLoading]=useState(false);async function update(value:string){setLoading(true);try{const res=await fetch(`/api/admin/enquiries/${id}`,{method:"PATCH",headers:{"Content-Type":"application/json"},body:JSON.stringify({status:value})});if(!res.ok)throw new Error();router.refresh();}catch{alert("Failed to update enquiry status.");}finally{setLoading(false);}}return <select aria-label="Enquiry status" disabled={loading} value={status} onChange={e=>update(e.target.value)} className="rounded-xl border border-white/10 bg-black px-3 py-2 text-sm text-white"><option value="New">New</option><option value="Contacted">Contacted</option><option value="In Progress">In Progress</option><option value="Closed">Closed</option><option value="Archived">Archived</option></select>}

@@ -40,3 +40,18 @@ Open `/admin/login`. The admin API independently verifies the signed HTTP-only c
 
 ## Removed functionality
 The former partner/referral/commission programme has been completely removed from the application, database schema, public navigation, contact form, and admin panel.
+
+## Team Members section
+
+The homepage now includes a dynamic Meet Our Team section. Manage members at `/admin/team-members` after signing into the admin panel. Names, departments, job titles, bios, photos, ordering, and visibility are editable. Photos use the existing Cloudinary media upload endpoint.
+
+### Database update required
+
+After pulling/extracting this update and configuring `DATABASE_URL`, run:
+
+```bash
+npx prisma db push
+npx prisma generate
+```
+
+Then run `npm run build` and deploy. Add the real team member names and photos in the admin panel; no sample team members are automatically seeded.

@@ -83,3 +83,17 @@ model Enquiry {
   status    String   @default("New")
   createdAt DateTime @default(now())
 }
+
+
+model TeamMember {
+  id          String   @id @default(cuid())
+  name        String
+  department  String
+  role        String
+  bio         String?
+  photo       String?
+  order       Int      @default(0)
+  visible     Boolean  @default(true)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}

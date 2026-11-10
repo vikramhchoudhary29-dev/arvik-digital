@@ -108,3 +108,9 @@ body {
     transform: translateX(-50%);
   }
 }
+/* Jewellery landing page: subtle motion only; honour reduced-motion preferences. */
+@keyframes jewelleryFloat { 0%,100% { transform:translateY(0) rotate(-9deg); } 50% { transform:translateY(-13px) rotate(-9deg); } }
+@keyframes jewelleryFloatDelayed { 0%,100% { transform:translateY(0) rotate(9deg); } 50% { transform:translateY(13px) rotate(9deg); } }
+.jewellery-float { animation:jewelleryFloat 7s ease-in-out infinite; }
+.jewellery-float-delayed { animation:jewelleryFloatDelayed 8s ease-in-out infinite; }
+@media (prefers-reduced-motion:reduce) { .jewellery-float,.jewellery-float-delayed { animation:none; } }

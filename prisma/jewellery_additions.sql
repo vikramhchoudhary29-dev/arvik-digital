@@ -1,0 +1,7 @@
+-- Additive-only migration. Back up production DB and review before applying.
+CREATE TABLE IF NOT EXISTS "JewelleryHeroSlide" ("id" TEXT PRIMARY KEY, "imageUrl" TEXT NOT NULL, "title" TEXT NOT NULL DEFAULT '', "subtitle" TEXT NOT NULL DEFAULT '', "sortOrder" INTEGER NOT NULL DEFAULT 0, "visible" BOOLEAN NOT NULL DEFAULT TRUE, "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS "JewelleryVideo" ("id" TEXT PRIMARY KEY, "videoUrl" TEXT NOT NULL, "title" TEXT NOT NULL DEFAULT '', "sortOrder" INTEGER NOT NULL DEFAULT 0, "visible" BOOLEAN NOT NULL DEFAULT TRUE, "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP);
+CREATE TABLE IF NOT EXISTS "JewelleryEnquiry" ("id" TEXT PRIMARY KEY, "customerName" TEXT NOT NULL, "whatsappNumber" TEXT NOT NULL, "shopName" TEXT NOT NULL, "city" TEXT NOT NULL, "interestedService" TEXT NOT NULL, "requirements" TEXT NOT NULL, "status" TEXT NOT NULL DEFAULT 'NEW', "adminNotes" TEXT NOT NULL DEFAULT '', "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, "updatedAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP, "followedUpAt" TIMESTAMP(3), "cancelledAt" TIMESTAMP(3));
+
+-- Additive design showcase table (apply only this statement if the original three tables already exist).
+CREATE TABLE IF NOT EXISTS "JewelleryDesign" ("id" TEXT PRIMARY KEY, "imageUrl" TEXT NOT NULL, "title" TEXT NOT NULL DEFAULT '', "sortOrder" INTEGER NOT NULL DEFAULT 0, "visible" BOOLEAN NOT NULL DEFAULT TRUE, "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP);

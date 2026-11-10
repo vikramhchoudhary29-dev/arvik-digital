@@ -97,3 +97,48 @@ model TeamMember {
   createdAt   DateTime @default(now())
   updatedAt   DateTime @updatedAt
 }
+
+
+model JewelleryHeroSlide {
+  id String @id @default(cuid())
+  imageUrl String
+  title String @default("")
+  subtitle String @default("")
+  sortOrder Int @default(0)
+  visible Boolean @default(true)
+  createdAt DateTime @default(now())
+}
+
+model JewelleryVideo {
+  id String @id @default(cuid())
+  videoUrl String
+  title String @default("")
+  sortOrder Int @default(0)
+  visible Boolean @default(true)
+  createdAt DateTime @default(now())
+}
+
+model JewelleryEnquiry {
+  id String @id @default(cuid())
+  customerName String
+  whatsappNumber String
+  shopName String
+  city String
+  interestedService String
+  requirements String
+  status String @default("NEW")
+  adminNotes String @default("")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  followedUpAt DateTime?
+  cancelledAt DateTime?
+}
+
+model JewelleryDesign {
+  id String @id @default(cuid())
+  imageUrl String
+  title String @default("")
+  sortOrder Int @default(0)
+  visible Boolean @default(true)
+  createdAt DateTime @default(now())
+}

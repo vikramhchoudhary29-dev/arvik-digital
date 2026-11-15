@@ -118,3 +118,12 @@
 - Hero wrapper now uses the active image natural aspect ratio from onLoad, with a 3.2:1 initial fallback and object-contain; no text/overlay/buttons.
 - No changes to database, admin, uploads, or enquiry workflow.
 - Verification: source inspection and archive integrity; local Next.js build not available here.
+
+## 2026-11-15 — Marketing dropdown and NFC landing page
+- Replaced top-level Jewellery Marketing with a gold Marketing disclosure containing Jewellery Marketing and NFC Smart Reviews.
+- Added `/smart-reviews` landing page, sitemap entry, metadata and product-specific WhatsApp enquiries. Preserved jewellery route and all existing backend/data flows.
+- Fixed tablet navbar visibility gap; added Escape/focus return, outside-click dismissal, keyboard access and a reduced-motion alternative to the short gold glow animation.
+- Verification: changed-file ESLint PASS; TypeScript `tsc --noEmit` PASS; Chrome automated browser checks PASS for HTTP 200, desktop click/keyboard/Tab/Escape/outside dismissal, both destination hrefs, mobile selection/close, FAQ, WhatsApp CTA, reduced motion and no overflow at 375/768/1024/1280px. No browser exceptions. Desktop and mobile screenshots inspected.
+- Production build compiled and passed TypeScript, but could not finish prerendering the existing database-backed sitemap with an intentionally offline DATABASE_URL. A complete production build with the configured database remains unverified. No live database accessed or changed. No migrations needed.
+- Setup: `npm ci` (requires configured DATABASE_URL for Prisma generation), then `npm run dev`. Local static-page verification used an offline placeholder and `npx prisma generate`; no migration/seed command was run.
+- Not pushed or deployed: awaiting the user's deployment approval. Smart Reviews backend and DNS untouched.

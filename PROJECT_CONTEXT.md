@@ -54,3 +54,11 @@
 - Hero title/subtitle fields remain in database for compatibility but are hidden from CMS UI.
 
 - Jewellery public hero: image-only, no overlay, and dynamically sized to each uploaded image natural aspect ratio (initial 3.2:1), preserving full banner without crop.
+
+## Marketing navigation and Smart Reviews — 2026-11-15
+- Shared navbar now has a gold-highlighted Marketing disclosure containing Jewellery Marketing (existing route preserved) and NFC Smart Reviews (`/smart-reviews`).
+- Mobile and tablet navigation use the same breakpoint as desktop navigation, closing the previous 1024–1279px navigation gap. Supports keyboard activation, Tab, Escape/focus return, outside click and reduced motion.
+- New static NFC landing page follows the existing dark/gold identity: product overview, illustrative stand concept, customer journey, features, business categories, quote/demo WhatsApp links and FAQs. Added to sitemap and includes canonical/Open Graph metadata.
+- Existing WhatsApp number/helper reused. No published price, fake testimonials, rating guarantees, automatic posting, or claims that outbound clicks equal published reviews.
+- No database schema/data, admin authentication, existing jewellery content, or Smart Reviews backend changed. No migrations required.
+- Local implementation only; publishing remains subject to the user's explicit deployment approval.

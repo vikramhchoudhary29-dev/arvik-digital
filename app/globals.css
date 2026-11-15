@@ -114,3 +114,16 @@ body {
 .jewellery-float { animation:jewelleryFloat 7s ease-in-out infinite; }
 .jewellery-float-delayed { animation:jewelleryFloatDelayed 8s ease-in-out infinite; }
 @media (prefers-reduced-motion:reduce) { .jewellery-float,.jewellery-float-delayed { animation:none; } }
+
+.marketing-highlight {
+  background: linear-gradient(110deg, rgba(250,204,21,.07), rgba(250,204,21,.2), rgba(250,204,21,.07));
+  background-size: 200% 100%;
+  animation: marketing-glow 4s ease-in-out 3;
+}
+@keyframes marketing-glow {
+  0%,100% { background-position: 0% 50%; box-shadow: 0 0 0 rgba(250,204,21,0); }
+  50% { background-position: 100% 50%; box-shadow: 0 0 18px rgba(250,204,21,.16); }
+}
+@media (prefers-reduced-motion: reduce) {
+  .marketing-highlight { animation: none; }
+}
